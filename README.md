@@ -16,6 +16,9 @@ This project is a modular, in-memory Address Book service built with Python and 
 ## Prerequisites
 
 - Python 3.8+
+```bash
+    python --version
+    ```
 
 ## Setup
 
@@ -44,6 +47,8 @@ To start the API server, run the following command from the root directory (`add
 uvicorn main:app --host 0.0.0.0 --port 5000 --reload
 ```
 The service will be available at `http://127.0.0.1:5000`.
+Also swagger UI for interactive usage of apis available at `http://127.0.0.1:5000/docs`.
+and API documentation at `http://127.0.0.1:5000/redoc`.
 
 ## API Usage (cURL Examples)
 
@@ -93,10 +98,49 @@ curl -X POST "http://127.0.0.1:5000/search" \
 ### 4. Delete Contact(s)
 *(Replace with actual IDs)*
 ```bash
-curl -X DELETE "[http://127.0.0.1:5000/delete](http://127.0.0.1:5000/delete)" \
+curl -X DELETE "http://127.0.0.1:5000/delete" \
 -H "Content-Type: application/json" \
 -d '[
     "your-uuid-for-alice",
     "your-uuid-for-bob"
 ]'
 ```
+
+
+### Issues Faced and Resolved During Setup
+This section outlines common issues that might be encountered during the setup process and their respective solutions.
+
+#### 1. pip._vendor.pep517.wrappers.BackendUnavailable or Pip Version Warning
+Issue:
+You might encounter an error like pip._vendor.pep517.wrappers.BackendUnavailable or a warning about an outdated pip version, such as:
+
+```bash
+return self._call_hook('get_requires_for_build_wheel', {
+  File "/home/narsingh/core/interview/urbancompany/address-book-service/venv/lib/python3.8/site-packages/pip/_vendor/pep517/wrappers.py", line 162, in _call_hook
+    raise BackendUnavailable
+pip._vendor.pep517.wrappers.BackendUnavailable
+
+WARNING: You are using pip version 19.2.3, however version 25.0.1 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command
+```
+
+reResolution:
+This typically indicates an outdated pip version. Upgrade pip to the latest version within your virtual environment:
+
+```bash
+pip install --upgrade pip
+```
+
+
+#### TypeError: 'type' object is not subscriptable (Python Version Incompatibility)
+This error occurs when using type hints like set[str] or Contact | None in Python versions older than 3.9 (for generic types like set) or 3.10 (for the | union operator).
+
+Example error: 
+```bash
+File "/home/narsingh/core/interview/urbancompany/address-book-service/address_book/storage/in_memory.py", line 17, in InMemoryStorage
+    def _get_index_words(self, text: str) -> set[str]:
+TypeError: 'type' object is not subscriptable
+```
+
+Resolution:
+The recommended solution is to upgrade your Python version to 3.8.0 or newer. If you are in a virtual environment, you will need to create a new virtual environment with the desired Python version.
