@@ -124,7 +124,7 @@ WARNING: You are using pip version 19.2.3, however version 25.0.1 is available.
 You should consider upgrading via the 'pip install --upgrade pip' command
 ```
 
-reResolution:
+Resolution:
 This typically indicates an outdated pip version. Upgrade pip to the latest version within your virtual environment:
 
 ```bash
@@ -132,7 +132,7 @@ pip install --upgrade pip
 ```
 
 
-#### TypeError: 'type' object is not subscriptable (Python Version Incompatibility)
+#### 2. TypeError: 'type' object is not subscriptable (Python Version Incompatibility)
 This error occurs when using type hints like set[str] or Contact | None in Python versions older than 3.9 (for generic types like set) or 3.10 (for the | union operator).
 
 Example error: 
