@@ -52,7 +52,7 @@ You can interact with the API using any HTTP client like `cURL` or Postman.
 ### 1. Create Contact(s)
 
 ```bash
-curl -X POST "[http://127.0.0.1:5000/create](http://127.0.0.1:5000/create)" \
+curl -X POST "\http://127.0.0.1:5000/create" \
 -H "Content-Type: application/json" \
 -d '[
     {
@@ -71,7 +71,7 @@ curl -X POST "[http://127.0.0.1:5000/create](http://127.0.0.1:5000/create)" \
 ### 2. Update Contact(s)
 *(Replace `"your-uuid-here"` with an actual ID from the create response)*
 ```bash
-curl -X PUT "[http://127.0.0.1:5000/update](http://127.0.0.1:5000/update)" \
+curl -X PUT "http://127.0.0.1:5000/update" \
 -H "Content-Type: application/json" \
 -d '[
     {
@@ -83,7 +83,7 @@ curl -X PUT "[http://127.0.0.1:5000/update](http://127.0.0.1:5000/update)" \
 
 ### 3. Search Contact(s)
 ```bash
-curl -X POST "[http://127.0.0.1:5000/search](http://127.0.0.1:5000/search)" \
+curl -X POST "http://127.0.0.1:5000/search" \
 -H "Content-Type: application/json" \
 -d '{
     "query": "smith"

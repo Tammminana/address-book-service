@@ -1,0 +1,134 @@
+{
+	"info": {
+		"_postman_id": "d5509b88-9ae1-44ad-be88-bb691e9a8034",
+		"name": "Address book",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32050710"
+	},
+	"item": [
+		{
+			"name": "create contact",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"name\": \"Alice Smith\",\n        \"phone\": \"1234567890\",\n        \"email\": \"alice@example.com\"\n    },\n    {\n        \"name\": \"Bob Jones\",\n        \"phone\": \"2345678901\",\n        \"email\": \"bob@example.com\"\n    }\n]"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/create",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update contact",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"id\": \"47616859-2540-423d-af27-c8618253aad2\",\n        \"phone\": \"9999999999\"\n    }\n]"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/update",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search contact",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"query\": \"smith\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/search",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete contact",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    \"47616859-2540-423d-af27-c8618253aad2\"\n]"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/delete",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"delete"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
